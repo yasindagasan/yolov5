@@ -33,7 +33,8 @@ def test(data,
          save_txt=False,  # for auto-labelling
          save_conf=False,
          plots=True,
-         log_imgs=0):  # number of logged images
+         log_imgs=0, # number of logged images
+         evolve=False):
 
     # Initialize/load model and set device
     training = model is not None
@@ -210,7 +211,7 @@ def test(data,
             plot_images(img, output_to_target(output, width, height), paths, str(f), names)  # predictions
 
     # W&B logging
-    if wandb_images:
+    if wandb_images and not evolve:
         wandb.log({"outputs": wandb_images})
 
     # Compute statistics

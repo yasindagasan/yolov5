@@ -323,7 +323,8 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                                                  dataloader=testloader,
                                                  save_dir=log_dir,
                                                  plots=epoch == 0 or final_epoch,  # plot first and last
-                                                 log_imgs=opt.log_imgs)
+                                                 log_imgs=opt.log_imgs,
+                                                 evolve = opt.evolve)
 
             # Write
             with open(results_file, 'a') as f:
